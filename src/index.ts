@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import { connectDBWithRetry } from './database';
 import { config } from './config';
-import { authRoute } from './routes/auth.route';
+import authRoute from './routes/auth.route';
 import { initializeBot } from './services/telegram/botService';
 import { connectRedis } from './database/redisConnection';
 import bodyParser from 'body-parser';
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/', authRoute());
+app.use('/', authRoute);
 
 app.post(`/bot${config.telegram.token}`, bodyParser.json(), (req, res) => {
   bot.processUpdate(req.body);

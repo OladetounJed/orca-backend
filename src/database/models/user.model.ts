@@ -3,7 +3,7 @@ import { UserType } from '../../@types/user';
 
 const UserSchema = new Schema<UserType>(
   {
-    full_name: {
+    first_name: {
       type: Schema.Types.String,
       required: true,
     },

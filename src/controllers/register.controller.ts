@@ -2,14 +2,14 @@ import { Request, Response } from 'express';
 import { hashPassword } from '../utils/hashPassword';
 import { createUser } from '../database/repositories/user/createUser';
 import { findUserbyTelegramId } from '../database/repositories/user/findUserbyTelegramId';
-import { generateUserToken } from '../utils/getUserToken';
 import { UserType } from '../@types/user';
+import { generateUserToken } from '../utils/getUserToken';
 
 const register = async (req: Request, res: Response) => {
-  const { fullName, password, telegramId } = req.body;
+  const { firstName, password, telegramId } = req.body;
 
-  if (!fullName || !telegramId || !password) {
-    return res.status(422).json({ message: 'The fields email, fullName, password and role are required' });
+  if (!firstName || !telegramId || !password) {
+    return res.status(422).json({ message: 'The fields email, firstName, password are required' });
   }
 
   const existingUser = await findUserbyTelegramId(telegramId);
@@ -19,7 +19,7 @@ const register = async (req: Request, res: Response) => {
   }
 
   const userInput: UserType = {
-    full_name: fullName,
+    first_name: firstName,
     telegram_id: telegramId,
     password: hashPassword(password),
     role: 'user',
