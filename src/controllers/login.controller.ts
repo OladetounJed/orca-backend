@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { findUserbyTelegramId } from '../database/repositories/user/findUserbyTelegramId';
 import { hashPassword } from '../utils/hashPassword';
-import { validateToken } from '../utils/validateToken';
+import { validateToken } from '../utils/tokenHandler';
 
 export const login = async (req: Request, res: Response) => {
   const { password, telegramId, token } = req.body;

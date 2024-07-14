@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { logger } from './logger';
-import { config } from '../config';
+import { logger } from '../logger';
+import { config } from '../../config';
 
 export const validateToken = (token: string): boolean => {
   try {

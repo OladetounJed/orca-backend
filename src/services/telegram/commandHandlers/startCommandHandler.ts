@@ -30,7 +30,6 @@ export const startCommandHandler = (bot: TelegramBot) => {
                   },
                 },
               ],
-              // Add more buttons here if needed
             ],
           },
         })

@@ -1,6 +1,6 @@
 import { UpdateWriteOpResult } from 'mongoose';
 import TelegramBot from 'node-telegram-bot-api';
-import { logger } from './logger';
+import { logger } from '../logger';
 
 export const handleAdminUpdateResult = (bot: TelegramBot, chatId: number, updatedResult: UpdateWriteOpResult | null, targetTelegramId: number) => {
   if (!updatedResult) {

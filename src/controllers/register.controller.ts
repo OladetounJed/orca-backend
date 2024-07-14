@@ -3,7 +3,7 @@ import { hashPassword } from '../utils/hashPassword';
 import { createUser } from '../database/repositories/user/createUser';
 import { findUserbyTelegramId } from '../database/repositories/user/findUserbyTelegramId';
 import { UserType } from '../@types/user';
-import { generateUserToken } from '../utils/getUserToken';
+import { generateUserToken } from '../utils/tokenHandler';
 
 const register = async (req: Request, res: Response) => {
   const { firstName, password, telegramId } = req.body;
