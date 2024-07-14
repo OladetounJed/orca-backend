@@ -5,8 +5,8 @@ describe('validateBotCommand', () => {
     expect(validateBotCommand('/start')).toBe(true);
   });
 
-  it('should return true for /adminapprove command', () => {
-    expect(validateBotCommand('/adminapprove')).toBe(true);
+  it('should return true for /admin command', () => {
+    expect(validateBotCommand('/adminhello')).toBe(true);
   });
 
   it('should return false for an invalid command', () => {
