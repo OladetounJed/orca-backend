@@ -1,19 +1,7 @@
 import { Request, Response } from 'express';
 import { findUserbyTelegramId } from '../database/repositories/user/findUserbyTelegramId';
 import { hashPassword } from '../utils/hashPassword';
-import { config } from '../config';
-import jwt from 'jsonwebtoken';
-import { logger } from '../utils/logger';
-
-const validateToken = (token: string): boolean => {
-  try {
-    jwt.verify(token, config.jwt.secret);
-    return true;
-  } catch (error) {
-    logger.error(error);
-    throw new Error('Invalid token');
-  }
-};
+import { validateToken } from '../utils/validateToken';
 
 export const login = async (req: Request, res: Response) => {
   const { password, telegramId, token } = req.body;

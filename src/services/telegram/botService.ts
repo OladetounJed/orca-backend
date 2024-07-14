@@ -8,7 +8,8 @@ let botInstance: TelegramBot | null = null;
 export const initializeBot = (): TelegramBot => {
   if (!botInstance) {
     try {
-      botInstance = new TelegramBot(config.telegram.token, { polling: true });
+      botInstance = new TelegramBot(config.telegram.token);
+      botInstance.setWebHook(`${config.telegram.webhookUrl}/bot${config.telegram.token}`);
       logger.info('Bot initialized');
       registerBotHandlers(botInstance);
     } catch (error) {

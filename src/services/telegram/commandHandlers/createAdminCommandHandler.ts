@@ -16,8 +16,6 @@ export const createAdminCommandHandler = async (bot: TelegramBot) => {
 
       const targetTelegramId = match ? parseInt(match[1], 10) : null;
 
-      console.log('targetTelegramId:', targetTelegramId);
-
       if (targetTelegramId) {
         const updatedResult = await updateUserRoleByTelegramId(targetTelegramId, 'admin');
 

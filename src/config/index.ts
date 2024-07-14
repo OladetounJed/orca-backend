@@ -32,6 +32,7 @@ export type Config = {
 
   telegram: {
     token: string;
+    webhookUrl: string;
   };
 
   database: {
@@ -76,6 +77,7 @@ export const config: Config = {
 
   telegram: {
     token: getEnvironmentValue('TELEGRAM_TOKEN'),
+    webhookUrl: getEnvironmentValue('TELEGRAM_WEBHOOK_URL'),
   },
 
   database: {
