@@ -9,6 +9,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    env:
+      MONGODB_URI: ${{ secrets.MONGODB_URI }}
+      SHA256_SECRET: ${{ secrets.SHA256_SECRET }}
+      TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+      WEB_URL: ${{ secrets.WEB_URL }}
+      REDIS_URI: ${{ secrets.REDIS_URI }}
+      BANNER_URL: ${{ secrets.BANNER_URL }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
