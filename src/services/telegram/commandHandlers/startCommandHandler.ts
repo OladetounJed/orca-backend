@@ -5,7 +5,7 @@ import { storeSessionInRedis } from '../../user/userSessionHandler';
 import { startCommandMessageFallback } from '../../../utils/startCommandMessageFallback';
 
 export const startCommandHandler = (bot: TelegramBot) => {
-  bot.onText(/\/start/, (msg: TelegramBot.Message) => {
+  bot.onText(/\/start/, async (msg: TelegramBot.Message) => {
     try {
       const chatId = msg.chat.id;
       const firstName = msg.from?.first_name;
@@ -13,7 +13,7 @@ export const startCommandHandler = (bot: TelegramBot) => {
 
       logger.info(msg);
 
-      const sessionId = storeSessionInRedis({ firstName, telegramId });
+      const sessionId = await storeSessionInRedis({ firstName, telegramId });
 
       const webUrl = sessionId ? `${config.web.url}/register?sessionId=${sessionId}` : config.web.url;
 
