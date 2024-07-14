@@ -17,6 +17,7 @@ jobs:
       REDIS_URI: ${{ secrets.REDIS_URI }}
       BANNER_URL: ${{ secrets.BANNER_URL }}
       TELEGRAM_WEBHOOK_URL: ${{ secrets.TELEGRAM_WEBHOOK_URL }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
     steps:
       - name: Checkout

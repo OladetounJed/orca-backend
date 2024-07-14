@@ -7,7 +7,7 @@ jest.mock('jsonwebtoken');
 jest.mock('../logger');
 
 describe('generateUserToken', () => {
-  const user = { fullName: 'John Doe', telegramId: '123456' };
+  const user = { telegram_id: '123456' };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -21,7 +21,7 @@ describe('generateUserToken', () => {
     const token = generateUserToken(user);
 
     expect(token).toEqual('mockToken');
-    expect(mockJwtSign).toHaveBeenCalledWith({ fullName: user.fullName, id: user.telegramId }, config.jwt.secret, { expiresIn: '1h' });
+    expect(mockJwtSign).toHaveBeenCalledWith({ id: user.telegram_id }, config.jwt.secret, { expiresIn: '1h' });
   });
 
   it('should log an error and throw if jwt.sign fails', () => {
