@@ -1,5 +1,5 @@
 export const validateBotCommand = (command: string) => {
-  const validCommands = ['/start', '/adminapprove', '/admincreate'];
+  const validCommands = ['/start', '/adminhello', '/admincreate'];
 
   return validCommands.includes(command);
 };
