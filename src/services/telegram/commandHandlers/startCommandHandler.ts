@@ -15,7 +15,7 @@ export const startCommandHandler = (bot: TelegramBot) => {
 
       const sessionId = storeSessionInRedis({ firstName, telegramId });
 
-      const webUrl = sessionId ? `${config.web.url}?sessionId=${sessionId}` : config.web.url;
+      const webUrl = sessionId ? `${config.web.url}/register?sessionId=${sessionId}` : config.web.url;
 
       bot
         .sendAnimation(chatId, config.web.bannerUrl, {

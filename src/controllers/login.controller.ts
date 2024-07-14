@@ -26,5 +26,5 @@ export const login = async (req: Request, res: Response) => {
     return res.status(401).json({ message: 'Invalid token', status: 401, user: null });
   }
 
-  return res.status(200).json({ user: existingUser });
+  return res.status(200).json({ user: existingUser, token });
 };

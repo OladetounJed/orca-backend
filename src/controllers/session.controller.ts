@@ -10,5 +10,5 @@ export const session = async (req: Request, res: Response) => {
 
   const sessionData = await getSessionData(sessionId.toString());
 
-  return res.status(200).json({ sessionData });
+  return res.status(200).json(sessionData);
 };

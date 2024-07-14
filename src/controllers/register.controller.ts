@@ -31,9 +31,11 @@ const register = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Failed to create user', status: 500 });
   }
 
+  const token = generateUserToken(newUser);
+
   return res.status(201).json({
     message: 'User created successfully',
-    token: generateUserToken(newUser),
+    token,
     code: 201,
     success: true,
   });

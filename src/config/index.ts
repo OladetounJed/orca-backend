@@ -67,7 +67,7 @@ export const config: Config = {
   sha256Secret: getEnvironmentValue('SHA256_SECRET'),
 
   jwt: {
-    secret: getEnvironmentValue('JWT_SECRET', 'secret'),
+    secret: getEnvironmentValue('JWT_SECRET'),
   },
 
   web: {
@@ -81,10 +81,10 @@ export const config: Config = {
   },
 
   database: {
-    uri: getEnvironmentValue('MONGODB_URI', 'mongodb+srv://localhost:27017/prosoccer'),
+    uri: getEnvironmentValue('MONGODB_URI'),
   },
 
   redis: {
-    uri: getEnvironmentValue('REDIS_URI', ''),
+    uri: getEnvironmentValue('REDIS_URI'),
   },
 };
