@@ -27,7 +27,9 @@ describe('validateToken', () => {
     (jwt.verify as jest.Mock).mockImplementation(() => {
       throw new Error('Invalid token');
     });
-    expect(() => validateToken(invalidToken)).toBe(false);
+    const result = validateToken(invalidToken);
+
+    expect(result).toBe(false);
     expect(jwt.verify).toHaveBeenCalledWith(invalidToken, config.jwt.secret);
     expect(logger.error).toHaveBeenCalled();
   });

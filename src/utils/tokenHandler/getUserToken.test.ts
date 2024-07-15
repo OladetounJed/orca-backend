@@ -32,7 +32,9 @@ describe('generateUserToken', () => {
       throw error;
     });
 
-    expect(() => generateUserToken(user)).toBeNull();
+    const result = generateUserToken(user);
+
+    expect(result).toBe(null);
     expect(logger.error).toHaveBeenCalledWith(error);
   });
 });
