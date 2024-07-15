@@ -24,7 +24,7 @@ describe('generateUserToken', () => {
     expect(mockJwtSign).toHaveBeenCalledWith({ id: user.telegram_id }, config.jwt.secret, { expiresIn: '365d' });
   });
 
-  it('should log an error and throw if jwt.sign fails', () => {
+  it('should log an error and return null jwt.sign fails', () => {
     const mockJwtSign = jwt.sign as jest.Mock;
     const error = new Error('jwt error');
 
@@ -32,7 +32,7 @@ describe('generateUserToken', () => {
       throw error;
     });
 
-    expect(() => generateUserToken(user)).toThrow('Invalid token');
+    expect(() => generateUserToken(user)).toBeNull();
     expect(logger.error).toHaveBeenCalledWith(error);
   });
 });

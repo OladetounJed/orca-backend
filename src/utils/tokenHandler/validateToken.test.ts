@@ -23,11 +23,11 @@ describe('validateToken', () => {
     expect(jwt.verify).toHaveBeenCalledWith(validToken, config.jwt.secret);
   });
 
-  it('should throw an error for an invalid token', () => {
+  it('should return false for an invalid token', () => {
     (jwt.verify as jest.Mock).mockImplementation(() => {
       throw new Error('Invalid token');
     });
-    expect(() => validateToken(invalidToken)).toThrow('Invalid token');
+    expect(() => validateToken(invalidToken)).toBe(false);
     expect(jwt.verify).toHaveBeenCalledWith(invalidToken, config.jwt.secret);
     expect(logger.error).toHaveBeenCalled();
   });
