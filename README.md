@@ -14,7 +14,7 @@ This project, Orca Backend, is designed to provide backend services for the Orca
 1. Clone the repository:
 
 ```bash
-git clone <[orca-backend](https://github.com/OladetounJed/orca-backend)>
+git clone https://github.com/OladetounJed/orca-backend
 Install dependencies:
 Create and configure the .env file based on the .env.example template:
 Start the application:
@@ -24,17 +24,40 @@ Start the application:
 
 Below is a simplified flowchart describing the technical flow of the Orca Backend:
 
-graph TD;
-A[Client Request] -->|"/auth"| B(Authentication)
-B --> C{Token Valid?}
-C -->|Yes| D[Access Granted]
-C -->|No| E[Access Denied]
-D --> F[Database Operations]
-F --> G[Return Response]
-E --> G
-B --> H[Telegram Notifications]
-H --> I[Redis Caching]
-I --> G
+```mermaid
+sequenceDiagram
+    participant Client as Client Request from Telegram bot
+    participant Telegram as Telegram Command Handlers
+    participant Auth as Authentication
+    participant TokenValidation as Token Valid?
+    participant Database as Database Operations
+    participant Redis as Redis Caching
+    participant Response as Return Response
+
+    Client->>+Telegram: /start bot command
+    Telegram->>+Redis: Check if session exists for user
+    Redis-->>-Telegram: Session exists (if user already interacted)
+    Telegram->>+Redis: Store new session in cache (if new user)
+    Redis-->>-Telegram: SessionId returned
+    Telegram->>Client: Return web URL with sessionId for registration
+    Client->>+Auth: Access web URL, fill and submit registration form
+    Auth->>+Database: Save new user details
+    Database-->>-Auth: User saved
+    Auth->>Client: User registered, proceed to login
+    Client->>+Auth: Login with credentials
+    Auth->>+TokenValidation: Validate provided token
+    TokenValidation-->>-Auth: Token valid
+    Auth->>+Database: Fetch user details
+    Database-->>-Auth: User details fetched
+    Auth->>Client: Login successful, return user details and token
+    Client->>+Telegram: Send admin command (e.g., /adminhello)
+    Telegram->>+Auth: Verify if user is admin
+    Auth->>+Database: Check admin status
+    Database-->>-Auth: Admin status verified
+    Auth-->>-Telegram: Admin verified
+    Telegram->>Client: Perform admin operation
+    Telegram->>Response: Return response to client
+```
 
 This flowchart illustrates the process from receiving client requests, through authentication, database operations, and finally responding to the client. It also highlights the use of Telegram for notifications and Redis for caching within the application.
 
