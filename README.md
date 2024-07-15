@@ -62,11 +62,11 @@ Start the application:
 ```
 
 ## Features
-User authentication and registration
-Session management
-Telegram notifications
-Data persistence with MongoDB
-Caching with Redis
+- User authentication and registration
+- Session management
+- Telegram notifications
+- Data persistence with MongoDB
+- Caching with Redis
 
 
 ## Contributing
