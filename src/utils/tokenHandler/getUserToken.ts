@@ -6,6 +6,6 @@ export const generateUserToken = (user) => {
     return jwt.sign({ id: user.telegram_id }, config.jwt.secret, { expiresIn: '365d' });
   } catch (error) {
     logger.error(error);
-    throw new Error('Invalid token');
+    return null;
   }
 };

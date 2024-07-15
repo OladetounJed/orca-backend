@@ -27,11 +27,15 @@ const register = async (req: Request, res: Response) => {
 
   const newUser = await createUser(userInput);
 
-  if (!newUser.id) {
+  if (!newUser?.id) {
     return res.status(500).json({ message: 'Failed to create user', status: 500 });
   }
 
   const token = generateUserToken(newUser);
+
+  if (!token) {
+    return res.status(500).json({ message: 'Failed to generate token', status: 500 });
+  }
 
   return res.status(201).json({
     message: 'User created successfully',

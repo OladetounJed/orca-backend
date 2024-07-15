@@ -6,6 +6,6 @@ export const findUserbyTelegramId = async (telegramId) => {
     return await User.findOne({ telegram_id: telegramId });
   } catch (error) {
     logger.error(error);
-    throw new Error('Error finding user');
+    return null;
   }
 };

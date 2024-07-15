@@ -8,6 +8,6 @@ export const validateToken = (token: string): boolean => {
     return true;
   } catch (error) {
     logger.error(error);
-    throw new Error('Invalid token');
+    return false;
   }
 };
