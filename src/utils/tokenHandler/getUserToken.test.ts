@@ -21,7 +21,7 @@ describe('generateUserToken', () => {
     const token = generateUserToken(user);
 
     expect(token).toEqual('mockToken');
-    expect(mockJwtSign).toHaveBeenCalledWith({ id: user.telegram_id }, config.jwt.secret, { expiresIn: '1h' });
+    expect(mockJwtSign).toHaveBeenCalledWith({ id: user.telegram_id }, config.jwt.secret, { expiresIn: '365d' });
   });
 
   it('should log an error and throw if jwt.sign fails', () => {

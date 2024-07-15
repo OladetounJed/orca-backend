@@ -13,7 +13,7 @@ export const initializeBot = (): TelegramBot => {
       logger.info('Bot initialized');
       registerBotHandlers(botInstance);
     } catch (error) {
-      logger.error('Failed to initialize bot:', error);
+      logger.error(`Failed to initialize bot: ${error}`);
       throw new Error('Failed to initialize bot');
     }
   }

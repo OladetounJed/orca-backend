@@ -29,7 +29,7 @@ export const createAdminCommandHandler = async (bot: TelegramBot) => {
         bot.sendMessage(telegramId, 'invalid command format. Use /admincreate <telegramId>');
       }
     } catch (error) {
-      logger.error('Error handling admin command:', error);
+      logger.error(`Error handling admin command: ${error}`);
       bot.sendMessage(telegramId, 'an error occurred while processing your command.');
     }
   });

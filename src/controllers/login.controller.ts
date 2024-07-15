@@ -17,8 +17,6 @@ export const login = async (req: Request, res: Response) => {
   }
 
   if (existingUser.password !== hashPassword(password)) {
-    console.log(hashPassword(password));
-    console.log(existingUser.password);
     return res.status(401).json({ message: 'Invalid credentials', status: 401, user: null });
   }
 

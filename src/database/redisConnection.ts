@@ -10,7 +10,7 @@ export const connectRedis = () => {
     redisClient = new Redis(config.redis.uri);
     logger.info('Connected to Redis');
   } catch (error) {
-    logger.error('Redis connection error:', error);
+    logger.error(`Redis connection error: ${error}`);
   }
 };
 

@@ -17,7 +17,7 @@ export const defaultCommandHandler = async (bot: TelegramBot) => {
         logger.info(`Invalid command received: ${command} from chat Id: ${chatId}`);
       }
     } catch (error) {
-      logger.error(`Error handling command: ${command} from chat ID: ${chatId}`, error);
+      logger.error(`Error handling command: ${command} from chat ID: ${chatId} ${error}`);
       bot.sendMessage(chatId, 'an error occurred while processing your command. please try again later.');
     }
   });

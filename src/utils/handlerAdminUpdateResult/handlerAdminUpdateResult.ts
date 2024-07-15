@@ -21,6 +21,7 @@ export const handleAdminUpdateResult = (bot: TelegramBot, chatId: number, update
     return;
   }
 
+  bot.sendMessage(targetTelegramId, 'your role has been updated to admin.');
   bot.sendMessage(chatId, 'user role updated successfully to admin.');
   logger.info(`User role for Telegram ID: ${targetTelegramId} updated successfully to admin.`);
 };

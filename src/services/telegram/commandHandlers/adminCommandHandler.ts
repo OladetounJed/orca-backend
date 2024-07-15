@@ -21,7 +21,7 @@ export const adminCommandHandler = (bot: TelegramBot) => {
       }
       return bot.sendMessage(chatId, 'invalid command format. Use /adminhello <telegramId> <message>');
     } catch (error) {
-      logger.error('Error handling admin command:', error);
+      logger.error(`An error occurred while processing /adminhello command: ${error}`);
       bot.sendMessage(chatId, 'An error occurred while processing your command.');
     }
   });

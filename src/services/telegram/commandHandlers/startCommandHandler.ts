@@ -34,11 +34,11 @@ export const startCommandHandler = (bot: TelegramBot) => {
           },
         })
         .catch((error) => {
-          logger.error('Error sending photo with /start command:', error);
+          logger.error(`Error sending photo with /start command: ${error}`);
           startCommandMessageFallback(bot, chatId, firstName, webUrl);
         });
     } catch (error) {
-      logger.error('Error handling /start command:', error);
+      logger.error(`Error handling /start command: ${error}`);
     }
   });
 };
